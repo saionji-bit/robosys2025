@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-　        
+
 
 def tonum(s):
     try:
@@ -15,3 +15,4 @@ for line in sys.stdin:
     ans += tonum(line)
 
 print(ans)
+
