@@ -64,6 +64,11 @@ out=$(echo | ./closet)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
+### STRANGE INPUT for closet (unexpected arguments) ###
+out=$(./closet dummy)
+[ "$?" = 1 ]      || ng "$LINENO"   # 引数があるときはエラー終了のはず
+[ "${out}" = "" ] || ng "$LINENO"   # 標準出力は空（エラーはstderr）
+
 
 [ "${res}" = 0 ] && echo OK   # ★ここをいちばん下に1回だけ
 exit $res
