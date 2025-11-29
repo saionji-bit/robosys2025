@@ -24,6 +24,7 @@ def main():
     if len(sys.argv) > 1:
         sys.stderr.write("Usage: closet < clothes.txt\n")
         sys.exit(1)
+
     items_by_season = {}
     had_input = False
 
