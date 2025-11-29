@@ -1,0 +1,56 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 yuki saionji
+# SPDX-License-Identifier: BSD-3-Clause
+
+import sys
+
+
+def parse_line(raw_line: str):
+    """1行を '季節,カテゴリ,色,名前' に分解する"""
+    line = raw_line.strip()
+    parts = line.split(",")
+    if len(parts) != 4:
+        # ここでは ValueError を投げて main 側で処理する
+        raise ValueError("format must be 'season,category,color,name'")
+    # 各要素の前後の空白も削る
+    season, category, color, name = [p.strip() for p in parts]
+    return season, category, color, name
+
+
+def main():
+    items_by_season = {}
+    had_input = False
+
+    for raw in sys.stdin:
+        # 空行だけの行は無視
+        if raw.strip() == "":
+            continue
+
+        had_input = True
+        try:
+            season, category, color, name = parse_line(raw)
+        except ValueError as e:
+            # エラーメッセージは標準エラー出力へ
+            sys.stderr.write(f"Error: {e}: {raw}")
+            sys.exit(1)
+
+        # 季節ごとにリストに追加
+        items_by_season.setdefault(season, []).append(
+            (category, color, name)
+        )
+
+    # 有効なデータが1つもなかった場合もエラーにする
+    if not had_input or not items_by_season:
+        sys.stderr.write("Error: no clothes data given on stdin\n")
+        sys.exit(1)
+
+    # 季節名でソートして出力
+    for season in sorted(items_by_season.keys()):
+        print(f"{season}:")
+        for category, color, name in items_by_season[season]:
+            print(f"  {category} {color} {name}")
+
+
+if __name__ == "__main__":
+    main()
+
