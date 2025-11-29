@@ -21,6 +21,10 @@ def parse_line(raw_line: str):
 
 
 def main():
+    # 季節をキー，その季節の服のリストを値にした辞書
+    items_by_season = {}
+    had_input = False
+
     # closet は引数を取らず，標準入力からだけデータを受け取る想定
     if len(sys.argv) > 1:
         sys.stderr.write("Usage: closet < clothes.txt\n")
