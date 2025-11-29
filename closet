@@ -29,8 +29,13 @@ def main():
     had_input = False
 
     for raw in sys.stdin:
+        stripped = raw.strip()
         # 空行だけの行は無視
         if raw.strip() == "":
+            continue
+
+        # 先頭が # の行はコメントとして無視
+        if stripped.startswith("#"):
             continue
 
         had_input = True
