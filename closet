@@ -54,7 +54,7 @@ def main():
 
     # 有効なデータが1つもなかった場合もエラーにする
     if not had_input or not items_by_season:
-        sys.stderr.write("Error: no clothes data given on stdin\n")
+        sys.stderr.write("Error: 標準入力から服のデータが読み込めませんでした\n")
         sys.exit(1)
 
     # 季節名でソートして出力
