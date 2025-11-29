@@ -31,4 +31,3 @@ $ chmod +x plus closet
 Copyright (c) 2025 yuki saionji
 
 一部のコードや手順は，千葉工業大学 上田隆一「ロボットシステム学」の講義資料を参考にして作成しています。
-
