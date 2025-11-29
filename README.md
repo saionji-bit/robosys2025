@@ -2,6 +2,16 @@
 ![test](https://github.com/saionji-bit/robosys2025/actions/workflows/test.yml/badge.svg)
 
 ロボットシステム学の練習用リポジトリです。  
+
+## 目次
+
+- plus コマンド
+- closet コマンド
+- テスト
+- 必要なソフトウェア
+- テスト環境
+- ライセンス・著作権
+
 授業で作成した `plus` コマンドや，服の一覧を表示する `closet` コマンドを置いています。
 
 ## plus コマンド
