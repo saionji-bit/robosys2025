@@ -23,3 +23,12 @@ $ git clone git@github.com:saionji-bit/robosys2025.git
 $ cd robosys2025
 $ chmod +x plus closet
 
+## ライセンス・著作権
+
+このソフトウェアパッケージは，3 条項 BSD ライセンス（BSD-3-Clause）の下で再頒布および使用が許可されています。  
+詳しくは同梱の `LICENSE` ファイルを参照してください。
+
+Copyright (c) 2025 yuki saionji
+
+一部のコードや手順は，千葉工業大学 上田隆一「ロボットシステム学」の講義資料を参考にして作成しています。
+
