@@ -30,9 +30,6 @@ def main():
         sys.stderr.write("Usage: closet < clothes.txt\n")
         sys.exit(1)
 
-    items_by_season = {}
-    had_input = False
-
     for raw in sys.stdin:
         stripped = raw.strip()
         # 空行だけの行は無視
