@@ -46,6 +46,12 @@ expected="冬:
 
 [ "${out}" = "${expected}" ] || ng "$LINENO"
 
+### NORMAL INPUT for closet with comments ###
+clothes_input_with_comment='# comment line\n冬,コート,黒,ダウン\n夏,Tシャツ,白,UT\n'
+out=$(printf "$clothes_input_with_comment" | ./closet)
+[ "$?" = 0 ]                 || ng "$LINENO"
+[ "${out}" = "${expected}" ] || ng "$LINENO"
+
 
 ### STRANGE INPUT for closet ###
 # フォーマットが不正な行 → エラー
