@@ -24,6 +24,11 @@ out=$(echo | ./plus)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
+### MORE NORMAL INPUT (plus: negative numbers) ###
+out=$(printf "1\n-2\n3\n" | ./plus)
+[ "$?" = 0 ]      || ng "$LINENO"
+[ "${out}" = 2 ]  || ng "$LINENO"
+
 
 ### NORMAL INPUT for closet ###
 clothes_input='冬,コート,黒,ダウン\n夏,Tシャツ,白,UT\n'
