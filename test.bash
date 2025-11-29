@@ -29,6 +29,11 @@ out=$(printf "1\n-2\n3\n" | ./plus)
 [ "$?" = 0 ]      || ng "$LINENO"
 [ "${out}" = 2 ]  || ng "$LINENO"
 
+### MORE NORMAL INPUT (plus: floats) ###
+out=$(printf "1.5\n2.5\n" | ./plus)
+[ "$?" = 0 ]       || ng "$LINENO"
+[ "${out}" = 4.0 ] || ng "$LINENO"
+
 
 ### NORMAL INPUT for closet ###
 clothes_input='冬,コート,黒,ダウン\n夏,Tシャツ,白,UT\n'
