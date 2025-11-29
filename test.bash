@@ -9,11 +9,11 @@ ng () {
 
 res=0
 
-### NORMAL INPUT ###
+### NORMAL INPUT (plus) ###
 out=$(seq 5 | ./plus)
 [ "${out}" = 15 ] || ng "$LINENO"
 
-### STRANGE INPUT ###
+### STRANGE INPUT (plus) ###
 # 文字が混ざったとき
 out=$(echo あ | ./plus)
 [ "$?" = 1 ]      || ng "$LINENO"   # 失敗しているはず
@@ -23,10 +23,6 @@ out=$(echo あ | ./plus)
 out=$(echo | ./plus)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
-
-[ "${res}" = 0 ] && echo OK
-exit $res
-
 
 
 ### NORMAL INPUT for closet ###
@@ -52,6 +48,7 @@ out=$(echo | ./closet)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
-[ "${res}" = 0 ] && echo OK
+
+[ "${res}" = 0 ] && echo OK   # ★ここをいちばん下に1回だけ
 exit $res
 
