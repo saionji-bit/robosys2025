@@ -2,6 +2,8 @@
 # SPDX-FileCopyrightText: 2025 yuki saionji
 # SPDX-License-Identifier: BSD-3-Clause
 
+"""服のリストを季節ごとにまとめて表示するコマンド。"""
+
 import sys
 
 
