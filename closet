@@ -12,8 +12,9 @@ def parse_line(raw_line: str):
     line = raw_line.strip()
     parts = line.split(",")
     if len(parts) != 4:
-        # ここでは ValueError を投げて main 側で処理する
-        raise ValueError("format must be 'season,category,color,name'")
+        # フォーマットがおかしい行は呼び出し側でエラー処理する
+        raise ValueError("行の形式が '季節,カテゴリ,色,名前' ではありません")
+
     # 各要素の前後の空白も削る
     season, category, color, name = [p.strip() for p in parts]
     return season, category, color, name
