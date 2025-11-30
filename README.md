@@ -28,6 +28,6 @@ $ chmod +x plus closet
 このソフトウェアパッケージは，3 条項 BSD ライセンス（BSD-3-Clause）の下で再頒布および使用が許可されています。  
 詳しくは同梱の `LICENSE` ファイルを参照してください。
 
-Copyright (c) 2025 yuki saionji
+Copyright (c) 2025 yuki hoya
 
 一部のコードや手順は，千葉工業大学 上田隆一「ロボットシステム学」の講義資料を参考にして作成しています。

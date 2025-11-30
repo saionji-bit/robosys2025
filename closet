@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# SPDX-FileCopyrightText: 2025 yuki saionji
+# SPDX-FileCopyrightText: 2025 yuki hoya
 # SPDX-License-Identifier: BSD-3-Clause
 
 """服のリストを季節ごとにまとめて表示するコマンド。"""
