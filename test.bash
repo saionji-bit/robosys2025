@@ -9,7 +9,7 @@ ng () {
 
 res=0
 
-### NORMAL INPUT for closet ###
+### NORMAL INPUT (closet, stdin) ###
 clothes_input='冬,コート,黒,ダウン\n夏,Tシャツ,白,UT\n'
 out=$(printf "$clothes_input" | ./closet)
 
@@ -21,26 +21,32 @@ expected="冬:
 [ "$?" = 0 ]                 || ng "$LINENO"
 [ "${out}" = "${expected}" ] || ng "$LINENO"
 
-### NORMAL INPUT for closet with comments ###
+### NORMAL INPUT (closet, stdin with comments) ###
 clothes_input_with_comment='# comment line\n冬,コート,黒,ダウン\n夏,Tシャツ,白,UT\n'
 out=$(printf "$clothes_input_with_comment" | ./closet)
 [ "$?" = 0 ]                 || ng "$LINENO"
 [ "${out}" = "${expected}" ] || ng "$LINENO"
 
-### STRANGE INPUT for closet ###
-# フォーマットが不正な行 → エラー
+### NORMAL INPUT (closet, file argument) ###
+printf "$clothes_input" > tmp_clothes.txt
+out=$(./closet tmp_clothes.txt)
+[ "$?" = 0 ]                 || ng "$LINENO"
+[ "${out}" = "${expected}" ] || ng "$LINENO"
+rm tmp_clothes.txt
+
+### STRANGE INPUT (closet, bad format line) ###
 out=$(echo "不正な行,カテゴリ,色" | ./closet)
 [ "$?" = 1 ]      || ng "$LINENO"   # 終了コード1のはず
 [ "${out}" = "" ] || ng "$LINENO"   # 標準出力は空のはず（エラーはstderr）
 
-# 空入力 → エラー
+### STRANGE INPUT (closet, empty input) ###
 out=$(echo | ./closet)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
-### STRANGE INPUT for closet (unexpected arguments) ###
-out=$(./closet dummy)
-[ "$?" = 1 ]      || ng "$LINENO"   # 引数があるときはエラー終了のはず
+### STRANGE INPUT (closet, nonexistent file) ###
+out=$(./closet does_not_exist.txt)
+[ "$?" = 1 ]      || ng "$LINENO"   # 存在しないファイル → エラー
 [ "${out}" = "" ] || ng "$LINENO"   # 標準出力は空（エラーはstderr）
 
 [ "${res}" = 0 ] && echo OK
