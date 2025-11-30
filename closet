@@ -25,15 +25,27 @@ def main():
     items_by_season = {}
     had_input = False
 
-    # closet は引数を取らず，標準入力からだけデータを受け取る想定
-    if len(sys.argv) > 1:
-        sys.stderr.write("Usage: closet < clothes.txt\n")
+    # 入力元の決定：
+    # 引数がなければ標準入力，
+    # 引数が1つあればそのファイルから読む
+    if len(sys.argv) == 1:
+        input_stream = sys.stdin
+    elif len(sys.argv) == 2:
+        path = sys.argv[1]
+        try:
+            input_stream = open(path, encoding="utf-8")
+        except OSError as e:
+            sys.stderr.write(f"Error: cannot open file '{path}': {e}\n")
+            sys.exit(1)
+    else:
+        # 引数が多すぎるとき
+        sys.stderr.write("Usage: closet [clothes.txt]\n")
         sys.exit(1)
 
-    for raw in sys.stdin:
+    for raw in input_stream:
         stripped = raw.strip()
         # 空行だけの行は無視
-        if raw.strip() == "":
+        if stripped == "":
             continue
 
         # 先頭が # の行はコメントとして無視
@@ -55,7 +67,7 @@ def main():
 
     # 有効なデータが1つもなかった場合もエラーにする
     if not had_input or not items_by_season:
-        sys.stderr.write("Error: 標準入力から服のデータが読み込めませんでした\n")
+        sys.stderr.write("Error: 標準入力やファイルから服のデータが読み込めませんでした\n")
         sys.exit(1)
 
     # 季節名でソートして出力
@@ -64,7 +76,4 @@ def main():
         for category, color, name in items_by_season[season]:
             print(f"  {category} {color} {name}")
 
-
-if __name__ == "__main__":
-    main()
 
