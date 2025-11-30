@@ -8,7 +8,7 @@ import sys
 
 
 def parse_line(raw_line: str):
-    """1行を '季節,カテゴリ,色,名前' に分解する"""
+    """1行を '季節,カテゴリ,色,名前' に分解する。"""
     line = raw_line.strip()
     parts = line.split(",")
     if len(parts) != 4:
@@ -35,7 +35,7 @@ def main():
         try:
             input_stream = open(path, encoding="utf-8")
         except OSError as e:
-            sys.stderr.write(f"Error: cannot open file '{path}': {e}\n")
+            sys.stderr.write(f"Error: ファイル '{path}' を開けませんでした: {e}\n")
             sys.exit(1)
     else:
         # 引数が多すぎるとき
@@ -65,6 +65,10 @@ def main():
             (category, color, name)
         )
 
+    # ファイルから読んでいた場合は閉じておく（stdinのときは何もしない）
+    if input_stream is not sys.stdin:
+        input_stream.close()
+
     # 有効なデータが1つもなかった場合もエラーにする
     if not had_input or not items_by_season:
         sys.stderr.write("Error: 標準入力やファイルから服のデータが読み込めませんでした\n")
@@ -76,4 +80,7 @@ def main():
         for category, color, name in items_by_season[season]:
             print(f"  {category} {color} {name}")
 
+
+if __name__ == "__main__":
+    main()
 
