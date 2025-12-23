@@ -28,9 +28,10 @@ def main():
     # 入力元の決定：
     # 引数がなければ標準入力，
     # 引数が1つあればそのファイルから読む
-    if len(sys.argv) == 1:
+    argc = len(sys.argv)
+    if argc == 1:
         input_stream = sys.stdin
-    elif len(sys.argv) == 2:
+    elif argc == 2:
         path = sys.argv[1]
         try:
             input_stream = open(path, encoding="utf-8")
@@ -38,10 +39,10 @@ def main():
             sys.stderr.write(f"Error: ファイル '{path}' を開けませんでした: {e}\n")
             sys.exit(1)
     else:
-         sys.stderr.write(
-            "Usage: closet [clothes.txt]\n"
-            "  ※ 引数なしの場合は標準入力から読み込みます。\n"
-            "     例: cat clothes.txt | closet\n"
+        sys.stderr.write(
+            f"Usage: {sys.argv[0]} [clothes.txt]\n"
+            "  引数がなければ標準入力から読み込みます。\n"
+            "  例: cat clothes.txt | closet\n"
         )
         sys.exit(1)
 
@@ -61,6 +62,8 @@ def main():
         except ValueError as e:
             # エラーメッセージは標準エラー出力へ
             sys.stderr.write(f"Error: {e}: {raw}")
+            if input_stream is not sys.stdin:
+                input_stream.close()
             sys.exit(1)
 
         # 季節ごとにリストに追加
