@@ -9,7 +9,7 @@ import sys
 
 def parse_line(raw_line: str):
     """1行を '季節,カテゴリ,色,名前' に分解する。"""
-　  line = raw_line.strip()
+    line = raw_line.strip()
     parts = line.split(",")
     if len(parts) != 4:
         # フォーマットがおかしい行は呼び出し側でエラー処理する
