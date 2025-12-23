@@ -1,8 +1,8 @@
 # robosys2025
 ![test](https://github.com/saionji-bit/robosys2025/actions/workflows/test.yml/badge.svg)
 
-ロボットシステム学の練習用リポジトリです。  
-授業で作成した `服の一覧を表示する `closet` コマンドを置いています。
+ロボットシステム学の練習用リポジトリです。 
+授業で作成した服の一覧を表示する `closet` コマンドを置いています。
 
 ## 目次
 
