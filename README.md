@@ -22,12 +22,19 @@
 ```bash
 $ git clone git@github.com:saionji-bit/robosys2025.git
 $ cd robosys2025
-$ chmod +x closet
+$ chmod +x close
 
 ## closet コマンド
 
 closet は，服のリストを「季節ごと」にグループ分けして表示するコマンドです。
-自分のクローゼットにある服をテキストファイルで管理しておき，季節ごとの持ち物を確認する用途を想定しています。
+自分のクローゼッ## インストール方法
+
+このリポジトリをクローンして，スクリプトに実行権限を付けると使えます。
+
+```bash
+$ git clone git@github.com:saionji-bit/robosys2025.git
+$ cd robosys2025
+$ chmod +x closetトにある服をテキストファイルで管理しておき，季節ごとの持ち物を確認する用途を想定しています。
 
 ## 入力フォーマット
 
