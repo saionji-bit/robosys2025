@@ -71,14 +71,14 @@ $ cat clothes.txt | ./closet
 夏:
   Tシャツ 白 UT
   パンツ 青 ジーンズ
-
+```
 ## テスト
 
 test.bash で closet の動作をまとめてテストできます。
 
 ```bash
 $ ./test.bash
-
+```
 
 テスト内容は次のようになっています。
 
